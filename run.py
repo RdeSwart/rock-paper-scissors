@@ -119,15 +119,6 @@ while num_games < 5:
         comp_score += 1
     
 
-    
-
-
-# Ask user to play again
-    if not input(f"Would you like to play again {name.title()}? (Type y/n)\n").lower()=="y":
-        start_game = False
-        print("Thanks for playing!")
-
-
 print(f"\n{name.title()}: {player_score} | Computer: {comp_score}")
 print("===============================")
 print("")
@@ -135,15 +126,18 @@ if num_games == 5:
     start_game=False
 
 if player_score == comp_score:
-  print("Draw!!")
+  print("It's a Draw!!")
 elif player_score > comp_score:
   print(f"Congrats {name.title()}, You won the game!!")
 else:
-  print(f"Oops Computer won the game!! Better luck next time {name.title()}!")   
+  print(f"Oops Computer won the game!! Better luck next time {name.title()}!") 
+
+# Ask user to play again
+if not input(f"Would you like to play again? (Type y/n)\n").lower()=="y":
+        start_game = False
+        print("Thanks for playing!")  
     
 
-
-    
 
 def main():
     menu()
