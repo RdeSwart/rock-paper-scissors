@@ -32,7 +32,7 @@ def menu():
     choice = int(input("Enter your choice:\n"))
 
     while choice > 2:
-        choice = int(input(f"{PURPLE}Please enter 1 or 2:\n"))
+        choice = int(input(f"{PURPLE}Please enter number 1 or 2:\n"))
 
     if choice == 1:
         get_rules()
@@ -60,6 +60,27 @@ def start_game():
     to 3 options, computer randomly chooses an option 
     and compares to see who wins
     """
+    name = input(f"{PURPLE}Please enter your name here:\n")
+    print(f"{CYAN}Hey {name}! Let's get started!")
+    print(f"{YELLOW}Please choose an option from the following:\n")
+    print(f"{CYAN}\n 1 - Rock\n 2 - Paper\n 3 - Scissors\n")
+
+    option = int(input(f"{PURPLE}Choose 1,2 or 3:\n"))
+
+    while option > 3 or option < 1:
+        option = int(input(f"{PURPLE}Invalid number, Please choose 1,2 or 3:\n"))
+    
+    if option == 1:
+        user_option = "Rock"
+    elif option == 2:
+        user_option = "Paper"
+    else:
+        user_option = "Scissors"
+    
+
+    print(f"{name}, you have chosen {user_option}")
+    print("Now it's my turn...")
+
 
 
 
