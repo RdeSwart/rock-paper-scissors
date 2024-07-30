@@ -20,11 +20,15 @@ banner = f"""{PURPLE}
 
 print(banner)
 
+name = input(f"{PURPLE}Please enter your name here:\n")
+print(f"{CYAN}Hey {name}! Let's get started!")
+
 def menu():
     """
     Gives options to read Rules of game or Start game
     Calls for function depending on choice made
     """
+
     print(f"{PURPLE}Main Menu:\n Choose from the following options:\n")
     print(f"{CYAN} 1. View Game Rules\n")
     print(f"{YELLOW} 2. Start the game\n")
@@ -38,11 +42,9 @@ def menu():
         get_rules()
     elif choice == 2:
         start_game()
+        
 
-    
-
-    
-
+# Display Rules
 def get_rules():
     """
     Prints rules of the game to terminal if user input is 1
@@ -54,14 +56,13 @@ def get_rules():
         + f"{CYAN}Scissors vs Paper --> Scissors Wins\n")
 
 
+# Main Game Function
 def start_game():
     """
     Main Game Play against computer. User inputs number corresponding
     to 3 options, computer randomly chooses an option 
     and compares to see who wins
     """
-    name = input(f"{PURPLE}Please enter your name here:\n")
-    print(f"{CYAN}Hey {name}! Let's get started!")
     print(f"{YELLOW}Please choose an option from the following:\n")
     print(f"{CYAN}\n 1 - Rock\n 2 - Paper\n 3 - Scissors\n")
 
@@ -79,7 +80,7 @@ def start_game():
     
 
     print(f"{name}, you have chosen {user_option}")
-    print("Now it's my turn...")
+    print(f"{CYAN}Now it's my turn...")
 
     #Computer chooses random selection
     computer = random.randint(1,3)
@@ -105,6 +106,12 @@ def start_game():
     else:
         print(f"Sorry {name}, you lose!")
 
+    # Ask user to play again
+    if not input(f"{name}, would you like to play again? (y/n)\n").lower()=="y":
+        start_game = False
+        print("Thanks for playing!")
+
+
 
 
 
@@ -117,4 +124,4 @@ def start_game():
 
 
 menu()
-
+start_game()
