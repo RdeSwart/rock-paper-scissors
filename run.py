@@ -21,7 +21,7 @@ banner = f"""{PURPLE}
 print(banner)
 
 name = input(f"{PURPLE}Please enter your name here:\n")
-print(f"{CYAN}Hey {name}! Let's get started!")
+print(f"{CYAN}Hey {name.title()}! Let's get started!")
 
 def menu():
     """
@@ -55,6 +55,10 @@ def get_rules():
         + f"{YELLOW}Rock vs Scissors --> Rock wins\n"
         + f"{CYAN}Scissors vs Paper --> Scissors Wins\n")
 
+player_score = 0
+comp_score = 0
+num_games = 0
+
 
 # Main Game Function
 def start_game():
@@ -63,6 +67,8 @@ def start_game():
     to 3 options, computer randomly chooses an option 
     and compares to see who wins
     """
+while num_games < 5:
+    
     print(f"{YELLOW}Please choose an option from the following:\n")
     print(f"{CYAN}\n 1 - Rock\n 2 - Paper\n 3 - Scissors\n")
 
@@ -70,19 +76,20 @@ def start_game():
 
     while option > 3 or option < 1:
         option = int(input(f"{PURPLE}Invalid number, Please choose 1,2 or 3:\n"))
-    
+
     if option == 1:
         user_option = "Rock"
     elif option == 2:
         user_option = "Paper"
     else:
         user_option = "Scissors"
-    
 
-    print(f"{name}, you have chosen {user_option}")
-    print(f"{CYAN}Now it's my turn...")
 
-    #Computer chooses random selection
+    print("Rock, Paper, Scissors....")
+    print("SHOOT!!")
+    print(f"{CYAN}{name.title()} : {user_option}")
+
+#Computer chooses random selection
     computer = random.randint(1,3)
 
     if computer == 1:
@@ -92,36 +99,54 @@ def start_game():
     else:
         comp_option = "Scissors"
 
-    print(f"{CYAN}I choose {comp_option}")
+    print(f"{YELLOW}Computer: {comp_option}")
+    num_games += 1
 
     #Compare both answers to determine the winner
     if user_option == comp_option:
         print("It's a tie!")
     elif user_option == "Paper" and comp_option == "Rock":
-        print(f"{name}, you win!")
+        print(f"{name.title()}, you win!")
+        player_score += 1
     elif user_option == "Rock" and comp_option == "Scissors":
-        print(f"{name}, you win!")
+        print(f"{name.title()}, you win!")
+        player_score += 1
     elif user_option == "Scissors" and comp_option == "Paper":
-        print(f"{name}, you win!")
+        print(f"{name.title()}, you win!")
+        player_score += 1
     else:
-        print(f"Sorry {name}, you lose!")
+        print(f"Sorry {name.title()}, you lose!")
+        comp_score += 1
+    
 
-    # Ask user to play again
-    if not input(f"{name}, would you like to play again? (y/n)\n").lower()=="y":
+    
+
+
+# Ask user to play again
+    if not input(f"Would you like to play again {name.title()}? (Type y/n)\n").lower()=="y":
         start_game = False
         print("Thanks for playing!")
 
 
+print(f"\n{name.title()}: {player_score} | Computer: {comp_score}")
+print("===============================")
+print("")
+if num_games == 5:
+    start_game=False
+
+if player_score == comp_score:
+  print("Draw!!")
+elif player_score > comp_score:
+  print(f"Congrats {name.title()}, You won the game!!")
+else:
+  print(f"Oops Computer won the game!! Better luck next time {name.title()}!")   
+    
 
 
+    
 
+def main():
+    menu()
+    start_game()
 
-
-
-
-
-
-
-
-menu()
-start_game()
+main()
