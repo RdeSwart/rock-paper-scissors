@@ -93,6 +93,19 @@ def start_game():
 
     print(f"{CYAN}I choose {comp_option}")
 
+    #Compare both answers to determine the winner
+    if user_option == comp_option:
+        print("It's a tie!")
+    elif user_option == "Paper" and comp_option == "Rock":
+        print(f"{name}, you win!")
+    elif user_option == "Rock" and comp_option == "Scissors":
+        print(f"{name}, you win!")
+    elif user_option == "Scissors" and comp_option == "Paper":
+        print(f"{name}, you win!")
+    else:
+        print(f"Sorry {name}, you lose!")
+
+
 
 
 
