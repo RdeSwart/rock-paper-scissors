@@ -1,32 +1,32 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Rock, Paper, Scissors
+A bit about the game here
+Live site can be found [Here](address)
 
-Welcome,
+## Contents:
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **May 14, 2024**
+## UX(User Experience)
+### First time User Goals:
+As a first time user, I would like to:
+1. Have clear instructions on what I need to do
+2. Choose an option, and that option display as expected
+3. Learn or remind myself of the rules
+4. Go straight to playing the game if I already know the rules
+5. Be able to see a tally of my score
+6. Be able to play again or exit the game if I am finished
 
-## Reminders
+### Developer Goals:
+As a developer, I would like:
+1. To make the game more personal, by asking the user's name
+2. Make the options clear and consise for the user to choose from
+3. Have the rules as an option, so players can go straight to gameplay should they already be familiar with the rules
+4. Give the computer a bit of personality for better user experience ie.The computer will call the user by their name
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+### Return User Goals:
+As a return user, I would like to:
+1. Add some here
 
-## Creating the Heroku app
+## Flow Chart
+I used a flow chart to visualise the functions I would need to use, and to try to predict any user/computer errors before they arise.
+Enter screenshot here
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
----
-
-Happy coding!
+## Design
