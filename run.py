@@ -81,6 +81,20 @@ def start_game():
     print(f"{name}, you have chosen {user_option}")
     print("Now it's my turn...")
 
+    #Computer chooses random selection
+    computer = random.randint(1,3)
+
+    if computer == 1:
+        comp_option = "Rock"
+    elif computer == 2:
+        comp_option = "Paper"
+    else:
+        comp_option = "Scissors"
+
+    print(f"{CYAN}I choose {comp_option}")
+
+
+
 
 
 
