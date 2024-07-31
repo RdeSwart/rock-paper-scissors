@@ -70,19 +70,21 @@ def start_game():
     and compares to see who wins
     """
     global num_games
+    global player_score
+    global comp_score
     while num_games < 5:
         
                     
-        print(f"{YELLOW}Please choose an option from the following:\n")
+        print(f"\n{YELLOW}Please choose an option from the following:\n")
         print(f"{CYAN}\n 1 - Rock\n 2 - Paper\n 3 - Scissors\n")
 
         option = int(input(f"{PURPLE}Choose 1,2 or 3:\n"))
     
         # Now check if the user's input is valid
          
-    while option > 3 or option < 1:
-        option = int(input(f"{PURPLE}Invalid number, Please choose 1,2 or 3:\n"))
-            
+        while option > 3 or option < 1:
+            option = int(input(f"{PURPLE}Invalid number, Please choose 1,2 or 3:\n"))
+                
         # User chooses an option
 
         if option == 1:
@@ -91,49 +93,50 @@ def start_game():
             user_option = "Paper"
         else:
             user_option = "Scissors"
-        
+    
     # Print user option
-    print("Rock, Paper, Scissors....")
-    print("SHOOT!!")
-    print(f"{CYAN}{name.title()} : {user_option}")
+        print("Rock, Paper, Scissors....")
+        print("SHOOT!!")
+        print(f"{CYAN}{name.title()} : {user_option}")
+        
+        #Computer chooses random selection
+        computer = random.randint(1,3)
 
-    #Computer chooses random selection
-    computer = random.randint(1,3)
-
-    if computer == 1:
-        comp_option = "Rock"
-    elif computer == 2:
-        comp_option = "Paper"
-    else:
-        comp_option = "Scissors"
+        if computer == 1:
+            comp_option = "Rock"
+        elif computer == 2:
+            comp_option = "Paper"
+        else:
+            comp_option = "Scissors"
 
         print(f"{YELLOW}Computer: {comp_option}")
         num_games += 1
+            
+        #Compare both answers to determine the winner
+        if user_option == comp_option:
+            print("It's a tie!")
+        elif user_option == "Paper" and comp_option == "Rock":
+            print(f"{name.title()}, you win!")
+            player_score += 1
+        elif user_option == "Rock" and comp_option == "Scissors":
+            print(f"{name.title()}, you win!")
+            player_score += 1
+        elif user_option == "Scissors" and comp_option == "Paper":
+            print(f"{name.title()}, you win!")
+            player_score += 1
+        else:
+            print(f"Sorry {name.title()}, you lose!")
+            comp_score += 1
+            #break #not sure about this here???
         
-
-    #Compare both answers to determine the winner
-    if user_option == comp_option:
-        print("It's a tie!")
-    elif user_option == "Paper" and comp_option == "Rock":
-        print(f"{name.title()}, you win!")
-        player_score += 1
-    elif user_option == "Rock" and comp_option == "Scissors":
-        print(f"{name.title()}, you win!")
-        player_score += 1
-    elif user_option == "Scissors" and comp_option == "Paper":
-        print(f"{name.title()}, you win!")
-        player_score += 1
-    else:
-        print(f"Sorry {name.title()}, you lose!")
-        comp_score += 1
-                    
-    print("*******************************")
-    print("")
-    print(f"\n{name.title()}: {player_score} | Computer: {comp_score}")
-    print("===============================")
-    print("")
-    if num_games == 5:
-        start_game=False
+        print("*******************************")
+        print("")
+        print(f"\n{name.title()}: {player_score} | Computer: {comp_score}")
+        print("===============================")
+        print("")
+        if num_games == 5:
+            start_game=False
+    
 
     if player_score == comp_score:
         print("It's a Draw!!")
@@ -142,17 +145,20 @@ def start_game():
     else:
         print(f"Oops Computer won the game!! Better luck next time {name.title()}!") 
 
-    # Ask user to play again
-        while True:
-            user_input = input(f"{PURPLE}Would you like to play again? (yes/no): ")
-            if user_input.lower() in ["yes", "y"]:
-                print("Ok, Awesome!")
-                break
-            elif user_input.lower() in ["no", "n"]:
-                print("Thanks for playing!")
-                break
-            else:
-                print("Invalid input. Please enter yes/no.") 
+        # Ask user to play again
+    while True:
+        user_input = input(f"{PURPLE}Would you like to play again? (yes/no): ")
+        if user_input.lower() in ["yes", "y"]:
+            print("Ok, Awesome!")
+            #break
+            player_score = 0
+            comp_score = 0
+            return menu()
+        elif user_input.lower() in ["no", "n"]:
+            print("Thanks for playing!")
+            break
+        else:
+            print("Invalid input. Please enter yes/no.") 
             
 
 
