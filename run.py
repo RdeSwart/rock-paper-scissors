@@ -44,7 +44,7 @@ def menu():
         start_game()
         
 
-# Display Rules
+    # Display Rules
 def get_rules():
     """
     Prints rules of the game to terminal if user input is 1
@@ -54,43 +54,50 @@ def get_rules():
         + f"{CYAN}Rock vs Paper --> Paper wins\n"
         + f"{YELLOW}Rock vs Scissors --> Rock wins\n"
         + f"{CYAN}Scissors vs Paper --> Scissors Wins\n")
+    return menu()
 
-#All scores start at zero
+    #All scores start at zero
 player_score = 0
 comp_score = 0
 num_games = 0
 
 
-# Main Game Function
+    # Main Game Function
 def start_game():
     """
     Main Game Play against computer. User inputs number corresponding
     to 3 options, computer randomly chooses an option 
     and compares to see who wins
     """
-while num_games < 5:
+    global num_games
+    while num_games < 5:
+        
+                    
+        print(f"{YELLOW}Please choose an option from the following:\n")
+        print(f"{CYAN}\n 1 - Rock\n 2 - Paper\n 3 - Scissors\n")
+
+        option = int(input(f"{PURPLE}Choose 1,2 or 3:\n"))
     
-    print(f"{YELLOW}Please choose an option from the following:\n")
-    print(f"{CYAN}\n 1 - Rock\n 2 - Paper\n 3 - Scissors\n")
-
-    option = int(input(f"{PURPLE}Choose 1,2 or 3:\n"))
-
+        # Now check if the user's input is valid
+         
     while option > 3 or option < 1:
         option = int(input(f"{PURPLE}Invalid number, Please choose 1,2 or 3:\n"))
+            
+        # User chooses an option
 
-    if option == 1:
-        user_option = "Rock"
-    elif option == 2:
-        user_option = "Paper"
-    else:
-        user_option = "Scissors"
-
-
+        if option == 1:
+            user_option = "Rock"
+        elif option == 2:
+            user_option = "Paper"
+        else:
+            user_option = "Scissors"
+        
+    # Print user option
     print("Rock, Paper, Scissors....")
     print("SHOOT!!")
     print(f"{CYAN}{name.title()} : {user_option}")
 
-#Computer chooses random selection
+    #Computer chooses random selection
     computer = random.randint(1,3)
 
     if computer == 1:
@@ -100,8 +107,9 @@ while num_games < 5:
     else:
         comp_option = "Scissors"
 
-    print(f"{YELLOW}Computer: {comp_option}")
-    num_games += 1
+        print(f"{YELLOW}Computer: {comp_option}")
+        num_games += 1
+        
 
     #Compare both answers to determine the winner
     if user_option == comp_option:
@@ -118,33 +126,34 @@ while num_games < 5:
     else:
         print(f"Sorry {name.title()}, you lose!")
         comp_score += 1
-    
-print("*******************************")
-print("")
-print(f"\n{name.title()}: {player_score} | Computer: {comp_score}")
-print("===============================")
-print("")
-if num_games == 5:
-    start_game=False
+                    
+    print("*******************************")
+    print("")
+    print(f"\n{name.title()}: {player_score} | Computer: {comp_score}")
+    print("===============================")
+    print("")
+    if num_games == 5:
+        start_game=False
 
-if player_score == comp_score:
-  print("It's a Draw!!")
-elif player_score > comp_score:
-  print(f"Congrats {name.title()}, You won the game!!")
-else:
-  print(f"Oops Computer won the game!! Better luck next time {name.title()}!") 
-
-# Ask user to play again
-while True:
-    user_input = input(f"{PURPLE}Would you like to play again? (yes/no): ")
-    if user_input.lower() in ["yes", "y"]:
-        print("Ok, Awesome!")
-        break
-    elif user_input.lower() in ["no", "n"]:
-        print("Thanks for playing!")
-        break
+    if player_score == comp_score:
+        print("It's a Draw!!")
+    elif player_score > comp_score:
+        print(f"Congrats {name.title()}, You won the game!!")
     else:
-        print("Invalid input. Please enter yes/no.")   
+        print(f"Oops Computer won the game!! Better luck next time {name.title()}!") 
+
+    # Ask user to play again
+        while True:
+            user_input = input(f"{PURPLE}Would you like to play again? (yes/no): ")
+            if user_input.lower() in ["yes", "y"]:
+                print("Ok, Awesome!")
+                break
+            elif user_input.lower() in ["no", "n"]:
+                print("Thanks for playing!")
+                break
+            else:
+                print("Invalid input. Please enter yes/no.") 
+            
 
 
 def main():
