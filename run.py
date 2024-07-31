@@ -55,6 +55,7 @@ def get_rules():
         + f"{YELLOW}Rock vs Scissors --> Rock wins\n"
         + f"{CYAN}Scissors vs Paper --> Scissors Wins\n")
 
+#All scores start at zero
 player_score = 0
 comp_score = 0
 num_games = 0
@@ -118,7 +119,8 @@ while num_games < 5:
         print(f"Sorry {name.title()}, you lose!")
         comp_score += 1
     
-
+print("*******************************")
+print("")
 print(f"\n{name.title()}: {player_score} | Computer: {comp_score}")
 print("===============================")
 print("")
@@ -133,10 +135,16 @@ else:
   print(f"Oops Computer won the game!! Better luck next time {name.title()}!") 
 
 # Ask user to play again
-if not input(f"Would you like to play again? (Type y/n)\n").lower()=="y":
-        start_game = False
-        print("Thanks for playing!")  
-    
+while True:
+    user_input = input(f"{PURPLE}Would you like to play again? (yes/no): ")
+    if user_input.lower() in ["yes", "y"]:
+        print("Ok, Awesome!")
+        break
+    elif user_input.lower() in ["no", "n"]:
+        print("Thanks for playing!")
+        break
+    else:
+        print("Invalid input. Please enter yes/no.")   
 
 
 def main():
