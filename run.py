@@ -33,16 +33,18 @@ def menu():
     print(f"{CYAN} 1. View Game Rules\n")
     print(f"{YELLOW} 2. Start the game\n")
 
-    choice = int(input("Enter your choice:\n"))
-
-    while choice > 2:
-        choice = int(input(f"{PURPLE}Please enter number 1 or 2:\n"))
-
-    if choice == 1:
+    # Check user inputs a number
+    choice = input("Enter your choice:\n")
+    if choice.isdigit() and choice == "1":
         get_rules()
-    elif choice == 2:
+    elif choice.isdigit() and choice == "2":
         start_game()
-        
+    else:
+        print(f"{PURPLE}Please enter number 1 or 2:\n")
+        menu()
+    
+    
+    
 
     # Display Rules
 def get_rules():
@@ -72,27 +74,26 @@ def start_game():
     global num_games
     global player_score
     global comp_score
+
+    player_score = 0
+    comp_score = 0
+    num_games = 0
+
     while num_games < 5:
-        
-                    
+    # Get user option and check it is a number               
         print(f"\n{YELLOW}Please choose an option from the following:\n")
         print(f"{CYAN}\n 1 - Rock\n 2 - Paper\n 3 - Scissors\n")
 
-        option = int(input(f"{PURPLE}Choose 1,2 or 3:\n"))
-    
-        # Now check if the user's input is valid
-         
-        while option > 3 or option < 1:
-            option = int(input(f"{PURPLE}Invalid number, Please choose 1,2 or 3:\n"))
-                
-        # User chooses an option
-
-        if option == 1:
+        option = input(f"{PURPLE}Choose 1,2 or 3:\n")
+        if option.isdigit() and option == "1":
             user_option = "Rock"
-        elif option == 2:
+        elif option.isdigit() and option == "2":
             user_option = "Paper"
-        else:
+        elif option.isdigit() and option == "3":
             user_option = "Scissors"
+        else:
+            print(f"{CYAN}Please choose number 1,2 or 3\n")
+            menu()
     
     # Print user option
         print("Rock, Paper, Scissors....")
@@ -129,6 +130,7 @@ def start_game():
             comp_score += 1
             #break #not sure about this here???
         
+        # Print Score Board
         print("*******************************")
         print("")
         print(f"\n{name.title()}: {player_score} | Computer: {comp_score}")
@@ -144,15 +146,11 @@ def start_game():
         print(f"Congrats {name.title()}, You won the game!!")
     else:
         print(f"Oops Computer won the game!! Better luck next time {name.title()}!") 
-
-        # Ask user to play again
+    # Ask user to play again
     while True:
         user_input = input(f"{PURPLE}Would you like to play again? (yes/no): ")
         if user_input.lower() in ["yes", "y"]:
             print("Ok, Awesome!")
-            #break
-            player_score = 0
-            comp_score = 0
             return menu()
         elif user_input.lower() in ["no", "n"]:
             print("Thanks for playing!")
@@ -164,6 +162,6 @@ def start_game():
 
 def main():
     menu()
-    start_game()
+    start_game() #take this out????
 
 main()
