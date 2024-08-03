@@ -156,7 +156,7 @@ def get_score():
         print(f"Oops Computer won the game!! Better luck next time {name.title()}!") 
     # Ask user to play again
     while True:
-        user_input = input(f"{PURPLE}Would you like to play again? (yes/no): ")
+        user_input = input(f"{PURPLE}Would you like to play again? (yes/no): \n")
         if user_input.lower() in ["yes", "y"]:
             print("Ok, Awesome!")
             start_game()
@@ -168,7 +168,7 @@ def get_score():
             print(f"{RED}Invalid input. Please enter yes/no.") 
             
 
-
+# Put all functions into one
 def main():
     menu()
     start_game()
