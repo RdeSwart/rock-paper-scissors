@@ -2,8 +2,9 @@ import random
 
 # colour codes
 PURPLE = '\033[0;35m'
-CYAN = "\033[36m"
-YELLOW = "\033[93m"
+CYAN = '\033[36m'
+YELLOW = '\033[93m'
+RED = '\033[0;31m'
 
 # banner for game
 banner = f"""{PURPLE} 
@@ -22,6 +23,7 @@ print(banner)
 
 name = input(f"{PURPLE}Please enter your name here:\n")
 print(f"{CYAN}Hey {name.title()}! Let's get started!")
+print(f"{CYAN}We're going to play five rounds, Good Luck!")
 
 def menu():
     """
@@ -29,18 +31,18 @@ def menu():
     Calls for function depending on choice made
     """
 
-    print(f"{PURPLE}Main Menu:\n Choose from the following options:\n")
+    print(f"{PURPLE}\n Main Menu:\n Choose from the following options:\n")
     print(f"{CYAN} 1. View Game Rules\n")
     print(f"{YELLOW} 2. Start the game\n")
 
     # Check user inputs a number
-    choice = input("Enter your choice:\n")
+    choice = input(f"{PURPLE}Enter your choice here:\n")
     if choice.isdigit() and choice == "1":
         get_rules()
     elif choice.isdigit() and choice == "2":
         start_game()
     else:
-        print(f"{PURPLE}Please enter number 1 or 2:\n")
+        print(f"{RED}Please enter number 1 or 2:\n")
         menu()
     
     
@@ -52,7 +54,7 @@ def get_rules():
     Prints rules of the game to terminal if user input is 1
     from main menu
     """
-    print(f"{PURPLE}Winning Rules of the game are as follows:\n"
+    print(f"{PURPLE}\n**Winning Rules of the game are as follows: **\n"
         + f"{CYAN}Rock vs Paper --> Paper wins\n"
         + f"{YELLOW}Rock vs Scissors --> Rock wins\n"
         + f"{CYAN}Scissors vs Paper --> Scissors Wins\n")
@@ -77,10 +79,11 @@ def start_game():
 
     player_score = 0
     comp_score = 0
-    num_games = 0
+    num_games = 1
 
-    while num_games < 5:
-    # Get user option and check it is a number               
+    while num_games < 6:
+    # Get user option and check it is a number   
+        print(f'{PURPLE}\n********************* ROUND #',num_games,'*********************')            
         print(f"\n{YELLOW}Please choose an option from the following:\n")
         print(f"{CYAN}\n 1 - Rock\n 2 - Paper\n 3 - Scissors\n")
 
@@ -92,7 +95,7 @@ def start_game():
         elif option.isdigit() and option == "3":
             user_option = "Scissors"
         else:
-            print(f"{CYAN}Please choose number 1,2 or 3\n")
+            print(f"{RED}Please choose number 1,2 or 3\n")
             menu()
     
     # Print user option
@@ -128,7 +131,7 @@ def start_game():
         else:
             print(f"Sorry {name.title()}, you lose!")
             comp_score += 1
-            #break #not sure about this here???
+            
         
         # Print Score Board
         print("*******************************")
@@ -136,10 +139,15 @@ def start_game():
         print(f"\n{name.title()}: {player_score} | Computer: {comp_score}")
         print("===============================")
         print("")
-        if num_games == 5:
-            start_game=False
+        if num_games == 6:
+            #start_game=False
+            get_score()
     
-
+def get_score():
+    """
+    Get final score from five rounds and ask user if they would like to 
+    play again
+    """
     if player_score == comp_score:
         print("It's a Draw!!")
     elif player_score > comp_score:
@@ -151,17 +159,19 @@ def start_game():
         user_input = input(f"{PURPLE}Would you like to play again? (yes/no): ")
         if user_input.lower() in ["yes", "y"]:
             print("Ok, Awesome!")
-            return menu()
+            start_game()
         elif user_input.lower() in ["no", "n"]:
             print("Thanks for playing!")
-            break
+            #break
+            menu()
         else:
-            print("Invalid input. Please enter yes/no.") 
+            print(f"{RED}Invalid input. Please enter yes/no.") 
             
 
 
 def main():
     menu()
-    start_game() #take this out????
+    start_game()
+    get_score()
 
 main()
