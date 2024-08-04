@@ -14,11 +14,8 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("RockPaperScissors")
 
-
-
 # Connect to Google sheets
 scores = SHEET.worksheet("scores")
-
 
 # colour codes
 PURPLE = '\033[0;35m'
@@ -66,8 +63,6 @@ def menu():
         menu()
     
     
-    
-
     # Display Rules
 def get_rules():
     """
@@ -103,7 +98,7 @@ def start_game():
 
     while num_games < 6:
     # Get user option and check it is a number 
-        time.sleep(2)
+        time.sleep(1)
         print(f'{PURPLE}\n********************* ROUND #',num_games,'*********************')            
         print(f"\n{YELLOW}Please choose an option from the following:\n")
         print(f"{CYAN}\n 1 - Rock\n 2 - Paper\n 3 - Scissors\n")
@@ -121,12 +116,12 @@ def start_game():
     
     # Print user option
         print("Rock, Paper, Scissors....")
-        time.sleep(2)
+        time.sleep(1)
         print(f"\n    SHOOT!!")
         print(f"\n{CYAN}{name.title()} : {user_option}")
     
         
-        #Computer chooses random selection
+    #Computer chooses random selection
         computer = random.randint(1,3)
 
         if computer == 1:
@@ -139,7 +134,7 @@ def start_game():
         print(f"{YELLOW}Computer: {comp_option}\n")
         num_games += 1
             
-        #Compare both answers to determine the winner
+    #Compare both answers to determine the winner
         if user_option == comp_option:
             time.sleep(1)
             print("It's a tie!")
@@ -170,6 +165,7 @@ def start_game():
         if num_games == 6:
             #start_game=False
             get_score()
+            
     
 def get_score():
     """
@@ -190,28 +186,32 @@ def get_score():
             start_game()
         elif user_input.lower() in ["no", "n"]:
             print(f"\n{YELLOW}Ok, Thanks for playing!")
-            #break
+            allow_score = input(f"\nWould you like to add your score to the Score Sheet?(yes/no):\n")
+            if allow_score.lower() in ["yes", "y"]:
+                print("Ok, Super, we'll add it now")
+                update_score()
+            elif allow_score.lower() in ["no", "n"]:
+                    print("Ok! Cool.")
+            else:
+                print(f"{RED}**Invalid input. Please enter yes/no.")
             menu()
         else:
             print(f"{RED}**Invalid input. Please enter yes/no.") 
 
 
-def get_new_score():
-    """
-    Get new score from player
-    """
-    print("getting score...")
-    new_score = [{name},player_score,comp_score]
-
-data = get_new_score()
-
-def update_score(data):
+def update_score():
     """
     Update Google Sheets with name and score
     """
+    global name
+    global player_score
+    global comp_score
+    time.sleep(1)
     print("Updating score sheet...")
     scores_worksheet = SHEET.worksheet("scores")
-    scores.append_row
+    #scores.append_row
+    scores.append_row([name, player_score,comp_score])
+    time.sleep(2)
     print("Score worksheet updated successfully\n")
 
 
@@ -226,6 +226,6 @@ def main():
     start_game()
     get_score()
     get_new_score()
-    update_score(data)
+    update_score()
 
 main()
