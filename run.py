@@ -17,6 +17,9 @@ SHEET = GSPREAD_CLIENT.open("RockPaperScissors")
 # Connect to Google sheets
 scores = SHEET.worksheet("scores")
 
+data = scores.get_all_values()
+print(data)
+
 # colour codes
 PURPLE = '\033[0;35m'
 CYAN = '\033[36m'
@@ -41,7 +44,6 @@ print(banner)
 
 name = input(f"{PURPLE}Please enter your name here:\n")
 print(f"{CYAN}Hey {name.title()}! Let's get started!")
-print(f"{CYAN}We're going to play five rounds, Good Luck!")
 
 def menu():
     """
@@ -52,6 +54,7 @@ def menu():
     print(f"{PURPLE}\n Main Menu:\n Choose from the following options:\n")
     print(f"{CYAN} 1. View Game Rules\n")
     print(f"{YELLOW} 2. Start the game\n")
+    print(f"{CYAN} 3. See Score Sheet\n")
 
     # Check user inputs a number
     choice = input(f"{PURPLE}Enter your choice here:\n")
@@ -59,6 +62,9 @@ def menu():
         get_rules()
     elif choice.isdigit() and choice == "2":
         start_game()
+    elif choice.isdigit() and choice == "3":
+        print(data)
+        menu()
     else:
         print(f"{RED}Please enter number 1 or 2:\n")
         menu()
@@ -100,6 +106,7 @@ def start_game():
     while num_games < 6:
     # Get user option and check it is a number 
         time.sleep(1)
+        print(f"{CYAN}We're going to play five rounds, Good Luck!")
         print(f'{PURPLE}\n********************* ROUND #',num_games,'*********************')            
         print(f"\n{YELLOW}Please choose an option from the following:\n")
         print(f"{CYAN}\n 1 - Rock\n 2 - Paper\n 3 - Scissors\n")
@@ -113,7 +120,7 @@ def start_game():
             user_option = "Scissors"
         else:
             print(f"{RED}**Please choose number 1,2 or 3\n")
-            menu()
+            #menu()
     
     # Print user option
         print("Rock, Paper, Scissors....")
@@ -192,7 +199,7 @@ def get_score():
                 print("Ok, Super, we'll add it now")
                 update_score()
             elif allow_score.lower() in ["no", "n"]:
-                    print("Ok! Cool.")
+                    print("Cool...See you again soon!")
             else:
                 print(f"{RED}**Invalid input. Please enter yes/no.")
             menu()
@@ -228,5 +235,6 @@ def main():
     get_score()
     get_new_score()
     update_score()
+    data = scores.get_all_values()
 
 main()
