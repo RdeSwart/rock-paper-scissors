@@ -1,5 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
+import random
+import time
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -12,12 +14,11 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("RockPaperScissors")
 
-import random
 
 
+# Connect to Google sheets
 scores = SHEET.worksheet("scores")
-data = scores.get_all_values()
-print(data)
+
 
 # colour codes
 PURPLE = '\033[0;35m'
@@ -79,7 +80,7 @@ def get_rules():
         + f"{CYAN}Scissors vs Paper --> Scissors Wins\n")
     return menu()
 
-    #All scores start at zero
+    #All scores start at zero - Global Variables
 player_score = 0
 comp_score = 0
 num_games = 0
@@ -101,7 +102,8 @@ def start_game():
     num_games = 1
 
     while num_games < 6:
-    # Get user option and check it is a number   
+    # Get user option and check it is a number 
+        time.sleep(2)
         print(f'{PURPLE}\n********************* ROUND #',num_games,'*********************')            
         print(f"\n{YELLOW}Please choose an option from the following:\n")
         print(f"{CYAN}\n 1 - Rock\n 2 - Paper\n 3 - Scissors\n")
@@ -114,13 +116,15 @@ def start_game():
         elif option.isdigit() and option == "3":
             user_option = "Scissors"
         else:
-            print(f"{RED}Please choose number 1,2 or 3\n")
+            print(f"{RED}**Please choose number 1,2 or 3\n")
             menu()
     
     # Print user option
         print("Rock, Paper, Scissors....")
-        print("SHOOT!!")
-        print(f"{CYAN}{name.title()} : {user_option}")
+        time.sleep(2)
+        print(f"\n    SHOOT!!")
+        print(f"\n{CYAN}{name.title()} : {user_option}")
+    
         
         #Computer chooses random selection
         computer = random.randint(1,3)
@@ -132,30 +136,35 @@ def start_game():
         else:
             comp_option = "Scissors"
 
-        print(f"{YELLOW}Computer: {comp_option}")
+        print(f"{YELLOW}Computer: {comp_option}\n")
         num_games += 1
             
         #Compare both answers to determine the winner
         if user_option == comp_option:
+            time.sleep(1)
             print("It's a tie!")
         elif user_option == "Paper" and comp_option == "Rock":
-            print(f"{name.title()}, you win!")
+            time.sleep(1)
+            print(f"{name.title()}, you win this round!")
             player_score += 1
         elif user_option == "Rock" and comp_option == "Scissors":
-            print(f"{name.title()}, you win!")
+            time.sleep(1)
+            print(f"{name.title()}, you win this round!")
             player_score += 1
         elif user_option == "Scissors" and comp_option == "Paper":
-            print(f"{name.title()}, you win!")
+            time.sleep(1)
+            print(f"{name.title()}, you win this round!")
             player_score += 1
         else:
-            print(f"Sorry {name.title()}, you lose!")
+            time.sleep(1)
+            print(f"Sorry {name.title()}, you lose this round!")
             comp_score += 1
             
         
         # Print Score Board
-        print("*******************************")
+        print(f"\n{CYAN}*******************************")
         print("")
-        print(f"\n{name.title()}: {player_score} | Computer: {comp_score}")
+        print(f"{name.title()}: {player_score} | Computer: {comp_score}")
         print("===============================")
         print("")
         if num_games == 6:
@@ -170,9 +179,9 @@ def get_score():
     if player_score == comp_score:
         print("It's a Draw!!")
     elif player_score > comp_score:
-        print(f"Congrats {name.title()}, You won the game!!")
+        print(f"*.*.*Congrats {name.title()}, You won the game!!*.*.*\n")
     else:
-        print(f"Oops Computer won the game!! Better luck next time {name.title()}!") 
+        print(f"Oh No! Computer won the game!! Better luck next time {name.title()}!") 
     # Ask user to play again
     while True:
         user_input = input(f"{PURPLE}Would you like to play again? (yes/no): \n")
@@ -180,17 +189,43 @@ def get_score():
             print("Ok, Awesome!")
             start_game()
         elif user_input.lower() in ["no", "n"]:
-            print("Thanks for playing!")
+            print(f"\n{YELLOW}Ok, Thanks for playing!")
             #break
             menu()
         else:
-            print(f"{RED}Invalid input. Please enter yes/no.") 
+            print(f"{RED}**Invalid input. Please enter yes/no.") 
+
+
+def get_new_score():
+    """
+    Get new score from player
+    """
+    print("getting score...")
+    new_score = [{name},player_score,comp_score]
+
+data = get_new_score()
+
+def update_score(data):
+    """
+    Update Google Sheets with name and score
+    """
+    print("Updating score sheet...")
+    scores_worksheet = SHEET.worksheet("scores")
+    scores.append_row
+    print("Score worksheet updated successfully\n")
+
+
             
 
 # Put all functions into one
 def main():
+    """
+    Run all program functions
+    """
     menu()
     start_game()
     get_score()
+    get_new_score()
+    update_score(data)
 
 main()
