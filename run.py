@@ -141,7 +141,7 @@ def start_game():
             user_option = "Scissors"
         else:
             print(f"{RED}**Please choose number 1,2 or 3\n")
-            # menu()
+            menu()
 
     # Print user option
         print(f"{WHITE}Rock, Paper, Scissors....")
