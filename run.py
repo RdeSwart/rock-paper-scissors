@@ -72,25 +72,13 @@ def get_scoresheet():
     in Google Sheets
     """
     scores = SHEET.worksheet("scores")
-    column = []
-    for ind in range(1 , 4):
-        column = scores.col_values(ind)
-        column.append(column)
-        print(f"{YELLOW}\nScoreboard:")
-        print(f"{CYAN}Column {ind}:", column)
-        scoreboard = zip(range(0), range(1), range(2))
-        # for name, player, computer in scoreboard:
-        #     print(f"{name}:{player}:{computer}:lololo")
-    # names = range(0)
-    # pscores = range(1)
-    # cscores = range(2)
-    # scoreboard = zip(names, pscores, cscores)
-    # print(scoreboard)
-
+    print(f"{YELLOW}\nScoreboard:")
+    for row in scores.get_all_values():
+        print(row)
     
 
     
-    # Display Rules
+# Display Rules
 def get_rules():
     """
     Print rules of the game to terminal.
@@ -103,12 +91,12 @@ def get_rules():
             + f"{CYAN}Scissors vs Paper --> Scissors Wins\n")
     return menu()
 
-    # All scores start at zero - Global Variables
+# All scores start at zero - Global Variables
 player_score = 0
 comp_score = 0
 num_games = 0
 
-    # Main Game Function
+# Main Game Function
 def start_game():
     """
     Main Game Play against computer.
@@ -125,7 +113,7 @@ def start_game():
     num_games = 1
 
     while num_games < 6:
-    # Get user option and check it is a number
+        # Get user option and check it is a number
         time.sleep(1)
         print(f"{CYAN}We're going to play five rounds, Good Luck!")
         print(f'{MAGENTA}\n******************* ROUND',num_games,'*******************')       
@@ -143,13 +131,13 @@ def start_game():
             print(f"{RED}**Please choose number 1,2 or 3\n")
             menu()
 
-    # Print user option
+        # Print user option
         print(f"{WHITE}Rock, Paper, Scissors....")
         time.sleep(1)
         print(f"\n{WHITE}    SHOOT!!")
         print(f"\n{CYAN}{name.title()} : {user_option}")
 
-    # Computer chooses random selection
+        # Computer chooses random selection
         computer = random.randint(1,3)
 
         if computer == 1:
@@ -162,7 +150,7 @@ def start_game():
         print(f"{YELLOW}Computer: {comp_option}\n")
         num_games += 1
 
-    # Compare both answers to determine the winner
+        # Compare both answers to determine the winner
         if user_option == comp_option:
             time.sleep(1)
             print("It's a tie!")
@@ -253,7 +241,6 @@ def main():
     get_score()
     get_new_score()
     update_score()
-    #data = scores.get_all_values()
 
 
 main()
