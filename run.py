@@ -73,14 +73,20 @@ def get_scoresheet():
     """
     scores = SHEET.worksheet("scores")
     column = []
-    for ind in range(1 , 3):
+    for ind in range(1 , 4):
         column = scores.col_values(ind)
         column.append(column)
+        print(f"{YELLOW}\nScoreboard:")
         print(f"{CYAN}Column {ind}:", column)
         scoreboard = zip(range(0), range(1), range(2))
-        print("\nScoreboard:")
-        for name, player_score, comp_score in scoreboard:
-            print(f"{name}:{player_score}:{comp_score}")
+        # for name, player, computer in scoreboard:
+        #     print(f"{name}:{player}:{computer}:lololo")
+    # names = range(0)
+    # pscores = range(1)
+    # cscores = range(2)
+    # scoreboard = zip(names, pscores, cscores)
+    # print(scoreboard)
+
     
 
     
@@ -138,9 +144,9 @@ def start_game():
             # menu()
 
     # Print user option
-        print("Rock, Paper, Scissors....")
+        print(f"{WHITE}Rock, Paper, Scissors....")
         time.sleep(1)
-        print(f"\n{YELLOW}    SHOOT!!")
+        print(f"\n{WHITE}    SHOOT!!")
         print(f"\n{CYAN}{name.title()} : {user_option}")
 
     # Computer chooses random selection
