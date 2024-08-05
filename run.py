@@ -222,7 +222,6 @@ def get_score():
                 print("Cool...See you again soon!")
             else:
                 print(f"{RED}**Invalid input. Please enter yes/no.")
-            menu()
         else:
             print(f"{RED}**Invalid input. Please enter yes/no.")
 
