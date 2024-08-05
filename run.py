@@ -18,7 +18,6 @@ SHEET = GSPREAD_CLIENT.open("RockPaperScissors")
 scores = SHEET.worksheet("scores")
 
 # colour codes
-PURPLE = '\033[0;35m'
 CYAN = '\033[36m'
 YELLOW = '\033[93m'
 RED = '\033[0;31m'
@@ -46,27 +45,27 @@ def menu():
     Call for function depending on choice made
     """
 
-    print(f"{PURPLE}\n Main Menu:\n Choose from the following options:\n")
+    print(f"{MAGENTA}\n Main Menu:\n Choose from the following options:\n")
     print(f"{CYAN} 1. View Game Rules\n")
-    print(f"{YELLOW} 2. Start the game\n")
+    print(f"{CYAN} 2. Start the game\n")
     print(f"{CYAN} 3. See Score Sheet\n")
 
     # Check user inputs a number
-    choice = input(f"{PURPLE}Enter your choice here:\n")
+    choice = input(f"{MAGENTA}Enter your choice here:\n")
     if choice.isdigit() and choice == "1":
         get_rules()
     elif choice.isdigit() and choice == "2":
         start_game()
     elif choice.isdigit() and choice == "3":
         # print(data)
-        get_scoreboard()
+        get_scoresheet()
         menu()
     else:
         print(f"{RED}Please enter number 1 or 2:\n")
         menu()
 
 
-def get_scoreboard():
+def get_scoresheet():
     """Return data from Google Sheets.
 
     Display list of names and scores that have been saved
@@ -74,10 +73,10 @@ def get_scoreboard():
     """
     scores = SHEET.worksheet("scores")
     column = []
-    for ind in range(1 , 4):
+    for ind in range(1 , 3):
         column = scores.col_values(ind)
         column.append(column)
-        print(f"{CYAN}Player {ind}:", column)
+        print(f"{CYAN}Column {ind}:", column)
         scoreboard = zip(range(0), range(1), range(2))
         print("\nScoreboard:")
         for name, player_score, comp_score in scoreboard:
@@ -92,7 +91,7 @@ def get_rules():
 
     Call when user inputs is 1 from main menu
     """
-    print(f"{PURPLE}\n**Winning Rules of the game are as follows: **\n"
+    print(f"{MAGENTA}\n**Winning Rules of the game are as follows: **\n"
             + f"{CYAN}Rock vs Paper --> Paper wins\n"
             + f"{YELLOW}Rock vs Scissors --> Rock wins\n"
             + f"{CYAN}Scissors vs Paper --> Scissors Wins\n")
@@ -123,11 +122,11 @@ def start_game():
     # Get user option and check it is a number
         time.sleep(1)
         print(f"{CYAN}We're going to play five rounds, Good Luck!")
-        print(f'{PURPLE}\n******************* ROUND',num_games,'*******************')       
+        print(f'{MAGENTA}\n******************* ROUND',num_games,'*******************')       
         print(f"\n{YELLOW}Please choose an option from the following:\n")
         print(f"{CYAN}\n 1 - Rock\n 2 - Paper\n 3 - Scissors\n")
 
-        option = input(f"{PURPLE}Choose 1,2 or 3:\n")
+        option = input(f"{MAGENTA}Choose 1,2 or 3:\n")
         if option.isdigit() and option == "1":
             user_option = "Rock"
         elif option.isdigit() and option == "2":
@@ -203,7 +202,7 @@ def get_score():
         print(f"Oh No! Computer won the game!! Better luck next time{name.title()}!") 
     # Ask user to play again
     while True:
-        user_input = input(f"{PURPLE}Would you like to play again? (yes/no): \n")
+        user_input = input(f"{MAGENTA}Would you like to play again? (yes/no): \n")
         if user_input.lower() in ["yes", "y"]:
             print("Ok, Awesome!")
             start_game()
@@ -249,7 +248,7 @@ def main():
     get_score()
     get_new_score()
     update_score()
-    data = scores.get_all_values()
+    #data = scores.get_all_values()
 
 
 main()
