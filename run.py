@@ -22,9 +22,11 @@ PURPLE = '\033[0;35m'
 CYAN = '\033[36m'
 YELLOW = '\033[93m'
 RED = '\033[0;31m'
+MAGENTA = '\u001b[35m'
+WHITE = '\u001b[37m'
 
 # banner for game
-banner = f"""{PURPLE}
+banner = f"""{MAGENTA}
    ___           __     ___                      ____    _
   / _ \___  ____/ /__  / _ \___ ____  ___ ____  / __/___(_)__ ______  _______
  / , _/ _ \/ __/  '_/ / ___/ _ `/ _ \/ -_) __/ _\ \/ __/ (_-<(_-< _ \/ __(_-<
@@ -33,7 +35,7 @@ banner = f"""{PURPLE}
 """
 print(banner)
 
-name = input(f"{PURPLE}Please enter your name here:\n")
+name = input(f"{MAGENTA}Please enter your name here:\n")
 print(f"{CYAN}Hey {name.title()}! Let's get started!")
 
 
@@ -75,7 +77,12 @@ def get_scoreboard():
     for ind in range(1 , 4):
         column = scores.col_values(ind)
         column.append(column)
-        print(column)
+        print(f"{CYAN}Player {ind}:", column)
+        scoreboard = zip(range(0), range(1), range(2))
+        print("\nScoreboard:")
+        for name, player_score, comp_score in scoreboard:
+            print(f"{name}:{player_score}:{comp_score}")
+    
 
     
     # Display Rules
@@ -193,7 +200,7 @@ def get_score():
     elif player_score > comp_score:
         print(f"*.*.*Congrats {name.title()}, You won the game!!*.*.*\n")
     else:
-        print(f"Oh No! Computer won the game!! Better luck next time {name.title()}!") 
+        print(f"Oh No! Computer won the game!! Better luck next time{name.title()}!") 
     # Ask user to play again
     while True:
         user_input = input(f"{PURPLE}Would you like to play again? (yes/no): \n")
