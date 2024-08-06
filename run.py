@@ -59,7 +59,7 @@ def menu():
         get_scoresheet()
         menu()
     else:
-        print(f"{RED}Please enter number 1 or 2:\n")
+        print(f"{RED}Please enter number 1, 2 or 3:\n")
         menu()
 
 
