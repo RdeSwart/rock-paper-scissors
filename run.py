@@ -25,14 +25,14 @@ MAGENTA = '\u001b[35m'
 WHITE = '\u001b[37m'
 
 # banner for game
-banner = f"""{MAGENTA}
+print(r'''
    ___           __     ___                      ____    _
   / _ \___  ____/ /__  / _ \___ ____  ___ ____  / __/___(_)__ ______  _______
  / , _/ _ \/ __/  '_/ / ___/ _ `/ _ \/ -_) __/ _\ \/ __/ (_-<(_-< _ \/ __(_-<
 /_/|_|\___/\__/_/\_\ /_/   \_,_/ .__/\__/_/   /___/\__/_/___/___|___/_/ /___/
                               /_/
-"""
-print(banner)
+''')
+
 
 name = input(f"{MAGENTA}Please enter your name here:\n")
 print(f"{CYAN}Hey {name.title()}! Let's get started!")
