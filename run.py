@@ -230,7 +230,7 @@ def get_score():
         elif user_input.lower() in ["no", "n"]:
             print(f"\n{YELLOW}Ok, Thanks for playing!")
             allow_score = input(
-                f"\n{CYAN}Would you like to add your score"
+                f"\n{CYAN}Would you like to add your score "
                 "to the Score Sheet?(yes/no):\n")
             if allow_score.lower() in ["yes", "y"]:
                 print("Ok, Super, we'll add it now")
@@ -260,6 +260,8 @@ def update_score():
     scores.append_row([name, player_score, comp_score])
     time.sleep(2)
     print("Score worksheet updated successfully\n")
+    clear_terminal()
+    main()
 
 
 # Put all functions into one
