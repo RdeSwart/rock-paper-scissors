@@ -7,7 +7,7 @@ I wanted to take this simple classic game, write the majority of it in Python, a
 
 The live site can be found [Here](https://rock-paper-scissors-cipp3-2dd227d48d85.herokuapp.com/)
 
-![Am I Responsive](assets/am-i-responsive.png)
+![Am I Responsive](assets/images/am-i-responsive.png)
 
 ## Contents:
 - [UX (User Experience)](#uxuser-experience)    
@@ -54,64 +54,64 @@ For the design of the terminal, I decided to keep it quite simple. I used a pink
 
 I created a banner using an ASCII Text to Art Generator, which gives some visual game effects for the user.
 
-![banner](assets/Banner.png)
+![banner](assets/images/Banner.png)
 
 I imported the time library to create a slow down effect on the programme using the sleep method, as I felt it was too "instant", and not giving a great user experience.  This slowed down the process a little so that the user had time to read the screen before terminal clearings.
 
 ### Flow Chart
 [Back to Top](#rock-paper-scissors)  
 I used a flow chart to visualise the functions I would need to use, and to try to predict any user/computer errors before they arise.  
-![Flow Chart - PNG](assets/flow-chart.png)
+![Flow Chart - PNG](assets/images/flow-chart.png)
 
 ### Features
 [Back to Top](#rock-paper-scissors)  
 To make the game a little more personable, the computer will ask for the user's name, which if the user so chooses, will also be used to enter into the Google Score Sheet. Should the user input all lowercase letters, the programme will capitalize the first letter by using the title() method.
 The user can also just press the return key here and the name will be left blank.
 
-![username](assets/username.png)
+![username](assets/images/username.png)
 
 The Menu list of options will appear after the Welcome message:
 
-![main menu](assets/menu.png)
+![main menu](assets/images/menu.png)
 
 If the user decides to view the Rules Page by selecting option "1", they will be given the different winning combinations:
 
-![Rules Page](assets/rules.png)
+![Rules Page](assets/images/rules.png)
 
 If the user chooses option "2", the game will start:
 
-![Play Game](assets/play-game.png)
+![Play Game](assets/images/play-game.png)
 
 If "3" is selected from the menu, the programme will fetch the
 score sheet from Google Sheets:
 
-![Score sheet](assets/scoresheet.png)
+![Score sheet](assets/images/scoresheet.png)
 
 ## Playing the Game
 The game consists of 5 rounds. After each round, the choices made by the user and the random choice made by the computer will display.  Then a message to say who won will display and finally the tallied score. The terminal will then clear, and the next round will commence.
 
-![Game Round](assets/game-round.png)
+![Game Round](assets/images/game-round.png)
 
 The number of rounds will display at the top of each game, to let the user know where they are in the game play.
 
-![Rounds Counter](assets/rounds-counter.png)
+![Rounds Counter](assets/images/rounds-counter.png)
 
 After all 5 rounds have been played, the final score will be displayed with a message of congratulations or commiserations depending on whether the user won or lost the full game:
 
-![Losing Message](assets/you-lost.png)
+![Losing Message](assets/images/you-lost.png)
 
 
-![Final Round](assets/final-round.png)
+![Final Round](assets/images/final-round.png)
 
 The user will then be asked if they would like to play again.  If they choose yes, the game will begin again and the scores will be cleared.
 
 If the user decides not to play again, the programme will ask if they would like to add their scores to the score sheet.
 
-![Add Score](assets/add-to-sheet.png)
+![Add Score](assets/images/add-to-sheet.png)
 
 If they choose yes, the following message will be displayed:
 
-![Update](assets/update-successful.png)
+![Update](assets/images/update-successful.png)
 
 The programme will then return to the main menu.
 
@@ -120,15 +120,15 @@ Should the user input something other than the choices of 1,2 or 3 in the menu, 
 
 ************change this image to correct one!!!!!!!!!!************
 
-![Menu Error](assets/menu-error-msg.png)
+![Menu Error](assets/images/menu-error-msg.png)
 
 If the user inputs something other than the required integers during the game, the same message will repeat until a correct number has been entered.
 
-![Game Error](assets/game-error-msg.png)
+![Game Error](assets/images/game-error-msg.png)
 
 At the end of the game, the question to play again requires a "yes"/"y", or "no"/"n" input, which will also display as an error and what is required instead:
 
-![Invalid Input](assets/invalid-input.png)
+![Invalid Input](assets/images/invalid-input.png)
 
 *The same message will appear when the user is asked if they would like to enter their score into Google Sheets and they enter an invalid response.
 
@@ -209,7 +209,7 @@ At the end of the game, the question to play again requires a "yes"/"y", or "no"
 
 I passed my code through Code Institutes Python Linter, it came back clear with no errors.
 
-![PEP8](assets/pep8-linter.png)
+![PEP8](assets/images/pep8-linter.png)
 
 ## Deployment
 [Back to Top](#rock-paper-scissors)  
