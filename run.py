@@ -73,8 +73,10 @@ def get_scoresheet():
     """
     scores = SHEET.worksheet("scores")
     print(f"{YELLOW}\nScoreboard:")
+    print(f"{WHITE}==============================")
     for row in scores.get_all_values():
-        print(row)
+        modified_list = str(row).replace('[', '').replace(']', '')
+        print(modified_list)
     
 
     
@@ -89,6 +91,7 @@ def get_rules():
             + f"{CYAN}Rock vs Paper --> Paper wins\n"
             + f"{YELLOW}Rock vs Scissors --> Rock wins\n"
             + f"{CYAN}Scissors vs Paper --> Scissors Wins\n")
+    return clear_terminal()       
     return menu()
 
 # All scores start at zero - Global Variables
@@ -120,6 +123,7 @@ def start_game():
         print(f"\n{YELLOW}Please choose an option from the following:\n")
         print(f"{CYAN}\n 1 - Rock\n 2 - Paper\n 3 - Scissors\n")
 
+        #while True:
         option = input(f"{MAGENTA}Choose 1,2 or 3:\n")
         if option.isdigit() and option == "1":
             user_option = "Rock"
@@ -128,8 +132,8 @@ def start_game():
         elif option.isdigit() and option == "3":
             user_option = "Scissors"
         else:
-            print(f"{RED}**Please choose number 1,2 or 3\n")
-            menu()
+            print(f"{RED}**Please choose number 1,2 or 3\n")    
+                
 
         # Print user option
         print(f"{WHITE}Rock, Paper, Scissors....")
@@ -177,8 +181,10 @@ def start_game():
         print(f"{name.title()}: {player_score} | Computer: {comp_score}")
         print("===============================")
         print("")
+        time.sleep(2)
         if num_games == 6:
             get_score()
+        clear_terminal()
 
 
 def get_score():
@@ -207,7 +213,9 @@ def get_score():
                 print("Ok, Super, we'll add it now")
                 update_score()
             elif allow_score.lower() in ["no", "n"]:
-                print("Cool...See you again soon!")
+                time.sleep(1)
+                clear_terminal()
+                menu()
             else:
                 print(f"{RED}**Invalid input. Please enter yes/no.")
         else:
@@ -229,6 +237,10 @@ def update_score():
     scores.append_row([name, player_score,comp_score])
     time.sleep(2)
     print("Score worksheet updated successfully\n")
+
+#Code from Slack lead Dajana in a thread
+def clear_terminal():
+    print("\033c",end="")
 
 
 # Put all functions into one
