@@ -45,8 +45,13 @@ As a return user, I would like to:
 
 ## Design
 [Back to Top](#rock-paper-scissors)  
-Design ideas here
-Banner using
+For the design of the terminal, I decided to keep it quite simple. I used a pink background, as magenta was my main font colour.  The font colours used were red, for invalid input messages, white, cyan and yellow to give the output some more interest.
+
+I created a banner using an ASCII Text to Art Generator, which gives some visual game effect for the user.
+
+![banner](assets/Banner.png)
+
+I imported the time library to create a slow down effect on the programme using the sleep method, as I felt it was too "instant", and not giving a great user experience.  This slowed down the process a little so that the user had time to read the screen before terminal clearings.
 
 ### Flow Chart
 [Back to Top](#rock-paper-scissors)  
@@ -55,10 +60,38 @@ I used a flow chart to visualise the functions I would need to use, and to try t
 
 ### Features
 [Back to Top](#rock-paper-scissors)  
-Welcome screenshot
-Add name
-Rules Page
-Game Scores after each
+To make the game a little more personalable, the computer will ask for the user's name, which if the user so chooses, will also be used to enter into the Google Score Sheet. Should the user input all lower case letter, the programme will capitalize the first letter by using the title() method.
+The user can also just press return key here and the name will be left blank.
+
+![username](assets/username.png)
+
+The Menu list of options will appear after the Welcome message:
+
+![main menu](assets/menu.png)
+
+If the user decides to view the Rules Page by selecting option "1", they will be given the different winning combinations:
+
+![Rules Page](assets/rules.png)
+
+If the user chooses option "2", the game will start:
+
+![Play Game](assets/play-game.png)
+
+If "3" is selected from the menu, the programme will fetch the
+score sheet from Google Sheets:
+
+![Score sheet](assets/scoresheet.png)
+
+### Playing the Game
+The game consists of 5 rounds. After each round, the choices made by the user and the random choice made by the computer will display.  Then a message to say who won will display and finally the tallied score. The terminal will then clear, and the next round will commence.
+
+![Game Round](assets/game-round.png)
+
+The number of rounds will display at the top of each game, to let the user know where they are in the game play.
+
+![Rounds Counter](assets/rounds-counter.png)
+
+After all 5 rounds have been played, the final score will be displayed:
 
 ### Future Features
 [Back to Top](#rock-paper-scissors)  
@@ -85,7 +118,9 @@ table here
 
 ### Validation
 [Back to Top](#rock-paper-scissors)  
-pep8
+I passed my code through Code Institutes Python Linter, it came back clear with no errors.
+
+![PEP8](assets/pep8-linter.png)
 
 ## Deployment
 [Back to Top](#rock-paper-scissors)  
