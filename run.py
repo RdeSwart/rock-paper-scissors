@@ -142,10 +142,13 @@ def start_game():
             option = input(f"{MAGENTA}Choose 1,2 or 3:\n")
             if option.isdigit() and option == "1":
                 user_option = "Rock"
+                break
             elif option.isdigit() and option == "2":
                 user_option = "Paper"
+                break
             elif option.isdigit() and option == "3":
                 user_option = "Scissors"
+                break
             else:
                 print(f"{RED}**Please choose number 1,2 or 3\n")
 
@@ -215,8 +218,8 @@ def get_score():
         print(f"*.*.*Congrats {name.title()}, You won the game!!*.*.*\n")
     else:
         print(
-            f"Oh No! Computer won the game!!"
-            "Better luck next time {name.title()}!")
+            "Oh No! Computer won the game!!"
+            f"Better luck next time {name.title()}!")
     # Ask user to play again
     while True:
         user_input = input(
