@@ -118,8 +118,6 @@ The programme will then return to the main menu.
 ### Invalid Input Responses:
 Should the user input something other than the choices of 1,2 or 3 in the menu, an error message will appear with a reminder of what numbers should be used:
 
-************change this image to correct one!!!!!!!!!!************
-
 ![Menu Error](assets/images/menu-error-msg.png)
 
 If the user inputs something other than the required integers during the game, the same message will repeat until a correct number has been entered.
