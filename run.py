@@ -57,12 +57,16 @@ def menu():
     elif choice.isdigit() and choice == "2":
         start_game()
     elif choice.isdigit() and choice == "3":
-        # print(data)
         get_scoresheet()
         menu()
     else:
         print(f"{RED}Please enter number 1 or 2:\n")
         menu()
+
+
+#Code from Slack lead Dajana in a thread
+def clear_terminal():
+    print("\033c",end="")
 
 
 def get_scoresheet():
@@ -71,6 +75,7 @@ def get_scoresheet():
     Display list of names and scores that have been saved
     in Google Sheets
     """
+    clear_terminal()
     scores = SHEET.worksheet("scores")
     print(f"{YELLOW}\nScoreboard:")
     print(f"{WHITE}==============================")
@@ -87,12 +92,12 @@ def get_rules():
 
     Call when user inputs is 1 from main menu
     """
-    print(f"{MAGENTA}\n**Winning Rules of the game are as follows: **\n"
+    clear_terminal()  
+    print(f"{MAGENTA}\n** Winning Rules of the game are as follows: **\n"
             + f"{CYAN}Rock vs Paper --> Paper wins\n"
             + f"{YELLOW}Rock vs Scissors --> Rock wins\n"
-            + f"{CYAN}Scissors vs Paper --> Scissors Wins\n")
-    return clear_terminal()       
-    return menu()
+            + f"{CYAN}Scissors vs Paper --> Scissors Wins\n")     
+menu()
 
 # All scores start at zero - Global Variables
 player_score = 0
@@ -107,6 +112,7 @@ def start_game():
     User inputs number corresponding to 3 options, computer randomly
     chooses an option and compares to see who wins
     """
+    clear_terminal()
     global num_games
     global player_score
     global comp_score
@@ -181,9 +187,10 @@ def start_game():
         print(f"{name.title()}: {player_score} | Computer: {comp_score}")
         print("===============================")
         print("")
-        time.sleep(2)
+        time.sleep(1)
         if num_games == 6:
             get_score()
+            menu()
         clear_terminal()
 
 
@@ -215,7 +222,7 @@ def get_score():
             elif allow_score.lower() in ["no", "n"]:
                 time.sleep(1)
                 clear_terminal()
-                menu()
+                main()
             else:
                 print(f"{RED}**Invalid input. Please enter yes/no.")
         else:
@@ -238,10 +245,6 @@ def update_score():
     time.sleep(2)
     print("Score worksheet updated successfully\n")
 
-#Code from Slack lead Dajana in a thread
-def clear_terminal():
-    print("\033c",end="")
-
 
 # Put all functions into one
 def main():
@@ -253,6 +256,7 @@ def main():
     get_score()
     get_new_score()
     update_score()
+    clear_terminal()
 
 
 main()
