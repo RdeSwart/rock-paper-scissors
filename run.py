@@ -44,7 +44,6 @@ def menu():
 
     Call for function depending on choice made
     """
-
     print(f"{MAGENTA}\n Main Menu:\n Choose from the following options:\n")
     print(f"{CYAN} 1. View Game Rules\n")
     print(f"{CYAN} 2. Start the game\n")
@@ -64,9 +63,15 @@ def menu():
         menu()
 
 
-#Code from Slack lead Dajana in a thread
+# Code from Slack lead Dajana in a thread
 def clear_terminal():
-    print("\033c",end="")
+    """
+    Clears the terminal.
+
+    Reduce build up of terminal screen for
+    better UX
+    """
+    print("\033c", end="")
 
 
 def get_scoresheet():
@@ -82,9 +87,8 @@ def get_scoresheet():
     for row in scores.get_all_values():
         modified_list = str(row).replace('[', '').replace(']', '')
         print(modified_list)
-    
 
-    
+
 # Display Rules
 def get_rules():
     """
@@ -92,17 +96,20 @@ def get_rules():
 
     Call when user inputs is 1 from main menu
     """
-    clear_terminal()  
-    print(f"{MAGENTA}\n** Winning Rules of the game are as follows: **\n"
-            + f"{CYAN}Rock vs Paper --> Paper wins\n"
-            + f"{YELLOW}Rock vs Scissors --> Rock wins\n"
-            + f"{CYAN}Scissors vs Paper --> Scissors Wins\n")     
-menu()
+    clear_terminal()
+    print(
+        f"{MAGENTA}\n** Winning Rules of the game are as follows: **\n"
+        + f"{CYAN}Rock vs Paper --> Paper wins\n"
+        + f"{YELLOW}Rock vs Scissors --> Rock wins\n"
+        + f"{CYAN}Scissors vs Paper --> Scissors Wins\n")
+    menu()
+
 
 # All scores start at zero - Global Variables
 player_score = 0
 comp_score = 0
 num_games = 0
+
 
 # Main Game Function
 def start_game():
@@ -125,21 +132,22 @@ def start_game():
         # Get user option and check it is a number
         time.sleep(1)
         print(f"{CYAN}We're going to play five rounds, Good Luck!")
-        print(f'{MAGENTA}\n******************* ROUND',num_games,'*******************')       
+        print(
+            f'{MAGENTA}\n******************* ROUND', num_games,
+            '*******************')
         print(f"\n{YELLOW}Please choose an option from the following:\n")
         print(f"{CYAN}\n 1 - Rock\n 2 - Paper\n 3 - Scissors\n")
 
-        #while True:
-        option = input(f"{MAGENTA}Choose 1,2 or 3:\n")
-        if option.isdigit() and option == "1":
-            user_option = "Rock"
-        elif option.isdigit() and option == "2":
-            user_option = "Paper"
-        elif option.isdigit() and option == "3":
-            user_option = "Scissors"
-        else:
-            print(f"{RED}**Please choose number 1,2 or 3\n")    
-                
+        while True:
+            option = input(f"{MAGENTA}Choose 1,2 or 3:\n")
+            if option.isdigit() and option == "1":
+                user_option = "Rock"
+            elif option.isdigit() and option == "2":
+                user_option = "Paper"
+            elif option.isdigit() and option == "3":
+                user_option = "Scissors"
+            else:
+                print(f"{RED}**Please choose number 1,2 or 3\n")
 
         # Print user option
         print(f"{WHITE}Rock, Paper, Scissors....")
@@ -148,7 +156,7 @@ def start_game():
         print(f"\n{CYAN}{name.title()} : {user_option}")
 
         # Computer chooses random selection
-        computer = random.randint(1,3)
+        computer = random.randint(1, 3)
 
         if computer == 1:
             comp_option = "Rock"
@@ -198,24 +206,29 @@ def get_score():
     """
     Print win or lose message.
 
-    Get final score from five rounds and ask user if they would like to 
-    play again
+    Get final score from five rounds and ask user
+    if they would like to play again
     """
     if player_score == comp_score:
         print("It's a Draw!!")
     elif player_score > comp_score:
         print(f"*.*.*Congrats {name.title()}, You won the game!!*.*.*\n")
     else:
-        print(f"Oh No! Computer won the game!! Better luck next time{name.title()}!") 
+        print(
+            f"Oh No! Computer won the game!!"
+            "Better luck next time {name.title()}!")
     # Ask user to play again
     while True:
-        user_input = input(f"{MAGENTA}Would you like to play again? (yes/no): \n")
+        user_input = input(
+            f"{MAGENTA}Would you like to play again? (yes/no): \n")
         if user_input.lower() in ["yes", "y"]:
             print("Ok, Awesome!")
             start_game()
         elif user_input.lower() in ["no", "n"]:
             print(f"\n{YELLOW}Ok, Thanks for playing!")
-            allow_score = input(f"\n{CYAN}Would you like to add your score to the Score Sheet?(yes/no):\n")
+            allow_score = input(
+                f"\n{CYAN}Would you like to add your score"
+                "to the Score Sheet?(yes/no):\n")
             if allow_score.lower() in ["yes", "y"]:
                 print("Ok, Super, we'll add it now")
                 update_score()
@@ -241,16 +254,15 @@ def update_score():
     time.sleep(1)
     print("Updating score sheet...")
     scores_worksheet = SHEET.worksheet("scores")
-    scores.append_row([name, player_score,comp_score])
+    scores.append_row([name, player_score, comp_score])
     time.sleep(2)
     print("Score worksheet updated successfully\n")
 
 
 # Put all functions into one
 def main():
-    """
-    Run all program functions
-    """
+    "Run all program functions"
+
     menu()
     start_game()
     get_score()
