@@ -191,6 +191,8 @@ def start_game():
             time.sleep(1)
             print(f"Sorry {name.title()}, you lose this round!")
             comp_score += 1
+        time.sleep(1)
+        clear_terminal()
 
         # Print Score Board
         print(f"\n{CYAN}*******************************")
@@ -202,7 +204,6 @@ def start_game():
         if num_games == 6:
             get_score()
             menu()
-        clear_terminal()
 
 
 def get_score():
