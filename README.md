@@ -151,10 +151,11 @@ At the end of the game, the question to play again requires a "yes"/"y", or "no"
 
 ## Libraries Used
 [Back to Top](#rock-paper-scissors)  
-1. random
-2. time
-3. gspread
-4. google auth
+1. random - Used to get computer to make a random selection
+2. time - Used to access sleep method for pauses during game
+3. gspread - Used for CRUD actions on Google Sheets
+4. credentials - Imported from googleauth to allow access to Google Sheets
+5. Google Sheets - Cloud based service used to store player names and scores
 
 
 ## Testing
