@@ -12,7 +12,7 @@ The live site can be found [Here](https://rock-paper-scissors-cipp3-2dd227d48d85
 ## Contents:
 - [UX (User Experience)](#uxuser-experience)    
 - [Design](#design)
-   - [Flow Chart](#flow)
+   - [Logic Diagram](#logic-diagram)
    - [Features](#features)
 - [Playing the Game](#playing-the-game)
    - [Invalid Inputs](#invalid-input-responses)
@@ -22,6 +22,8 @@ The live site can be found [Here](https://rock-paper-scissors-cipp3-2dd227d48d85
    - [Issues and Resolutions](#issues-and-resolutions)
    - [Validation](#validation)
 - [Deployment](#deployment)
+   - [Cloning](#cloning-the-repository)
+   - [Forking](#fork-the-repository)
 - [Credits](#credits)
 
 ## UX(User Experience)
@@ -52,23 +54,32 @@ As a return user, I would like to:
 [Back to Top](#rock-paper-scissors)  
 For the design of the terminal, I decided to keep it quite simple. I used a pink background, as magenta was my main font colour.  The font colours used were red, for invalid input messages, white, cyan and yellow to give the output some more interest and fun.
 
-I created a banner using an ASCII Text to Art Generator, which gives some visual game effects for the user.
+I created a banner using an ASCII Text to Art Generator, which gives some visual game effects for the user in the terminal.
 
 ![banner](assets/images/Banner.png)
 
+I added a simple heading on the page with a border in a complimentary grey colour.
+I also centered the terminal and header, as I thought it looked more aethetically pleasing.
+
 I imported the time library to create a slow down effect on the programme using the sleep method, as I felt it was too "instant", and not giving a great user experience.  This slowed down the process a little so that the user had time to read the screen before terminal clearings.
 
-### Flow Chart
+### Logic Diagram
 [Back to Top](#rock-paper-scissors)  
-I used a flow chart to visualise the functions I would need to use, and to try to predict any user/computer errors before they arise.  
-![Flow Chart - PNG](assets/images/flow-chart.png)
+
+I used a logic diagram to visualise the functions I would need to use, and to try to predict any user/computer errors before they arise.  
+[Logic Diagram](assets/images/flow-chart.png)
+
+![Logic Diagram PNG](assets/images/flow-chart.png)
 
 ### Features
 [Back to Top](#rock-paper-scissors)  
 To make the game a little more personable, the computer will ask for the user's name, which if the user so chooses, will also be used to enter into the Google Score Sheet. Should the user input all lowercase letters, the programme will capitalize the first letter by using the title() method.
-The user can also just press the return key here and the name will be left blank.
 
 ![username](assets/images/username.png)
+
+I included an if statement to ensure the user doesn't leave the Name blank, they can use numbers and letters if they so choose.
+
+![Invalid User Name](assets/images/invalid-user-name.png)
 
 The Menu list of options will appear after the Welcome message:
 
@@ -228,6 +239,31 @@ The Deployment Process is as follows:
 10. Click "Connect"
 11. Click "Deploy Branch" to begin deployment. Watch the app being built.
 12. Click "View" to see the app in the terminal
+
+### Cloning the Repository
+
+To clone the repository:
+1. Go to the [Github repository](https://github.com/RdeSwart/rock-paper-scissors)
+2. Click on the "<>Code" button located above the list of files
+3. Choose whether you prefer to clone using HTTPS, SSH or Github CI.
+4. Copy the URL to clipboard
+
+   ```git@github.com:RdeSwart/rock-paper-scissors.git```
+5. Open Git Bash or Terminal
+6. Change the current working directory to where you would
+like the cloned directory.
+7. In the IDE terminal, paste the link
+8. Press Enter to create the local clone
+
+### Fork the Repository
+
+To fork the repository:
+1. Open the [Github repository](https://github.com/RdeSwart/rock-paper-scissors)
+2. Click on the "Fork" button at the top of the screen
+3. On "Create New Fork" page, rename the repository
+4. Click "Create Fork" at the bottom of the form
+
+
 
 ## Credits
 [Back to Top](#rock-paper-scissors)  
