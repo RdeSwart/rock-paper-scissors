@@ -33,9 +33,14 @@ print(r'''
                               /_/
 ''')
 
-
+# Ensure user doesn't enter a blank
 name = input(f"{MAGENTA}Please enter your name here:\n")
-print(f"{CYAN}Hey {name.title()}! Let's get started!")
+if name == "":
+    name = input(
+        f"{RED}Invalid! Please enter your name here:\n")
+    print(f"{CYAN}Hey {name.title()}! Let's get started!")
+else:
+    print(f"{CYAN}Hey {name.title()}! Let's get started!")
 
 
 def menu():
