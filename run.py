@@ -110,9 +110,9 @@ def get_rules():
     print(
         f"{WHITE}\nTraditionally the game is played with hands:\n"
         + "The Rock is made with a closed fist\n"
-        + "Paper is a flat hand with fingers and thumb extended"
+        + "Paper is a flat hand with fingers and thumb extended\n"
         " and the palm facing downward\n"
-        + "Scissors is a fist with the index and middle fingers"
+        + "Scissors is a fist with the index and middle fingers\n"
         " fully extended toward the opposing player.\n")
     menu()
 
