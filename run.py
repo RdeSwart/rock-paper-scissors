@@ -178,18 +178,18 @@ def start_game():
 
         # Compare both answers to determine the winner
         if user_option == comp_option:
-            time.sleep(1)
+            time.sleep(1.5)
             print("It's a tie!")
         elif user_option == "Paper" and comp_option == "Rock":
-            time.sleep(1)
+            time.sleep(1.5)
             print(f"{name.title()}, you win this round!")
             player_score += 1
         elif user_option == "Rock" and comp_option == "Scissors":
-            time.sleep(1)
+            time.sleep(1.5)
             print(f"{name.title()}, you win this round!")
             player_score += 1
         elif user_option == "Scissors" and comp_option == "Paper":
-            time.sleep(1)
+            time.sleep(1.5)
             print(f"{name.title()}, you win this round!")
             player_score += 1
         else:
