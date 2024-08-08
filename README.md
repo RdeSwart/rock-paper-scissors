@@ -149,6 +149,7 @@ At the end of the game, the question to play again requires a "yes"/"y", or "no"
 1. In the future, I would like to offer a Top scorer's list.
 2. I would also like to feature harder levels, as you progress through the game, more items would be added to make the chances of winning lower.
 3. I would like to implement an option to play with a friend instead of the computer.
+4. I would like to make the Score Sheet from Google sheets more attractive by using a pop up table, maybe GUI programming with TKinter.
 
 
 ## Technologies Used
