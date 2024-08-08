@@ -107,6 +107,13 @@ def get_rules():
         + f"{CYAN}Rock vs Paper --> Paper wins\n"
         + f"{YELLOW}Rock vs Scissors --> Rock wins\n"
         + f"{CYAN}Scissors vs Paper --> Scissors Wins\n")
+    print(
+        f"{WHITE}\nTraditionally the game is played with hands:\n"
+        + "The Rock is made with a closed fist\n"
+        + "Paper is a flat hand with fingers and thumb extended"
+        " and the palm facing downward\n"
+        + "Scissors is a fist with the index and middle fingers"
+        " fully extended toward the opposing player.\n")
     menu()
 
 
